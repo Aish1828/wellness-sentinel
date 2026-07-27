@@ -14,6 +14,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRecommendationsRouteImport } from './routes/_authenticated/recommendations'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedInsightsRouteImport } from './routes/_authenticated/insights'
 import { Route as AuthenticatedHistoryRouteImport } from './routes/_authenticated/history'
 import { Route as AuthenticatedHealthCheckRouteImport } from './routes/_authenticated/health-check'
@@ -45,6 +46,11 @@ const AuthenticatedRecommendationsRoute =
     path: '/recommendations',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedInsightsRoute = AuthenticatedInsightsRouteImport.update({
   id: '/insights',
   path: '/insights',
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/health-check': typeof AuthenticatedHealthCheckRoute
   '/history': typeof AuthenticatedHistoryRoute
   '/insights': typeof AuthenticatedInsightsRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/recommendations': typeof AuthenticatedRecommendationsRoute
 }
 export interface FileRoutesByTo {
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/health-check': typeof AuthenticatedHealthCheckRoute
   '/history': typeof AuthenticatedHistoryRoute
   '/insights': typeof AuthenticatedInsightsRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/recommendations': typeof AuthenticatedRecommendationsRoute
 }
 export interface FileRoutesById {
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/_authenticated/health-check': typeof AuthenticatedHealthCheckRoute
   '/_authenticated/history': typeof AuthenticatedHistoryRoute
   '/_authenticated/insights': typeof AuthenticatedInsightsRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/recommendations': typeof AuthenticatedRecommendationsRoute
 }
 export interface FileRouteTypes {
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/health-check'
     | '/history'
     | '/insights'
+    | '/profile'
     | '/recommendations'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/health-check'
     | '/history'
     | '/insights'
+    | '/profile'
     | '/recommendations'
   id:
     | '__root__'
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/_authenticated/health-check'
     | '/_authenticated/history'
     | '/_authenticated/insights'
+    | '/_authenticated/profile'
     | '/_authenticated/recommendations'
   fileRoutesById: FileRoutesById
 }
@@ -188,6 +200,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRecommendationsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/insights': {
       id: '/_authenticated/insights'
       path: '/insights'
@@ -232,6 +251,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedHealthCheckRoute: typeof AuthenticatedHealthCheckRoute
   AuthenticatedHistoryRoute: typeof AuthenticatedHistoryRoute
   AuthenticatedInsightsRoute: typeof AuthenticatedInsightsRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedRecommendationsRoute: typeof AuthenticatedRecommendationsRoute
 }
 
@@ -241,6 +261,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedHealthCheckRoute: AuthenticatedHealthCheckRoute,
   AuthenticatedHistoryRoute: AuthenticatedHistoryRoute,
   AuthenticatedInsightsRoute: AuthenticatedInsightsRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedRecommendationsRoute: AuthenticatedRecommendationsRoute,
 }
 
