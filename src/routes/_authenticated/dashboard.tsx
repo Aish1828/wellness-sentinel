@@ -252,7 +252,15 @@ function Greeting({ name }: { name: string }) {
   );
 }
 
-function QuickAction({ to, icon: Icon, label }: { to: string; icon: typeof Plus; label: string }) {
+function QuickAction({
+  to,
+  icon: Icon,
+  label,
+}: {
+  to: "/health-check" | "/analytics" | "/insights";
+  icon: typeof Plus;
+  label: string;
+}) {
   return (
     <Link
       to={to}
