@@ -34,7 +34,7 @@ export const Route = createFileRoute("/_authenticated/settings")({
       { property: "og:description", content: "Preferences, data export and privacy controls." },
     ],
   }),
-  component: Settings;
+  component: Settings,
 });
 
 function Settings() {
