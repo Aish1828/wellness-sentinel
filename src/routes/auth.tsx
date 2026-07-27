@@ -34,8 +34,8 @@ export const Route = createFileRoute("/auth")({
       { property: "og:description", content: "Your private, offline-first preventive health workspace." },
     ],
   }),
-  validateSearch: (search: Record<string, unknown>) => ({
-    mode: (search.mode as Mode) || "login",
+  validateSearch: (search: { mode?: Mode }) => ({
+    mode: search.mode ?? ("login" as Mode),
   }),
   component: AuthPage,
 });
